@@ -1,0 +1,17 @@
+section {
+    height: 100vh;
+    background: var(--bg-gradient);
+    position: relative;
+}
+
+form {
+    background-color: var(--bg-white);
+    width: 90%;
+    max-width: 400px;
+    box-shadow: var(--box-shadow-primary);
+}
+
+form img {
+    width: 100%;
+    max-width: 180px;
+}

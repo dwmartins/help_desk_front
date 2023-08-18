@@ -2,3 +2,12 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+    /*  background colors */
+    --bg-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+    --bg-white: #ebebebe7;
+
+    /* Box shadow */
+    --box-shadow-primary: 0px 0px 15px 5px #0000002a;
+}
