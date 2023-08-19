@@ -14,7 +14,7 @@ export class LoginComponent {
   formLogin: FormGroup;
 
   showPassword: string = 'password';
-  eye: string = 'eye';
+  eye: string = 'bi bi-eye';
 
   alert: any[] = [];
   loadSpinner: boolean = false;
@@ -68,6 +68,11 @@ export class LoginComponent {
     }
     const userData = JSON.stringify(userRes);
     localStorage.setItem('user_login', userData);
+  }
+
+  viePassword() {
+    this.showPassword = (this.showPassword === "text") ? "password" : (this.showPassword === "password") ? "text" : this.showPassword
+    this.eye = (this.eye === "bi bi-eye") ? "bi bi-eye-slash" : (this.eye === "bi bi-eye-slash") ? "bi bi-eye" : this.eye;
   }
 
   alerts(type: string, description: string) {

@@ -13,7 +13,7 @@
         <mat-form-field class="w-100">
             <mat-label>Senha</mat-label>
             <input [type]="showPassword" name="user_password" formControlName="user_password" matInput>
-            <!-- <app-icons (click)="viePassword()" [iconName]="eye" iconColor="#747474"></app-icons> -->
+            <i (click)="viePassword()" [class]="eye"></i>
         </mat-form-field>
 
         <button class="btn btn-primary w-100 fs-5 d-flex justify-content-center align-items-center p-1">
