@@ -39,13 +39,17 @@ export class LoginComponent {
 
         if(response.success) {
           this.setLocalStorage(response);
+          this.alerts('success', 'Login realizado com sucesso.')
           
         } else if(response.alert) {
+          this.alerts('info', response.alert)
         }
       }, (error) => {
         console.log(`ERRO: ${error}`);
+        this.alerts('error', 'Erro ao realizar o login.')
       })
     } else {
+      this.alerts('info', 'Preencha todos os campos.')
       this.formLogin.markAllAsTouched();
     }
   }
@@ -62,6 +66,13 @@ export class LoginComponent {
     }
     const userData = JSON.stringify(userRes);
     localStorage.setItem('user_login', userData);
+  }
+
+  alerts(type: string, description: string) {
+    this.alert.push({
+      type: type,
+      description: description
+    })
   }
 
 }

@@ -25,5 +25,5 @@
 
     </form>
 
-    <app-alerts type="error" description="Usuário não encontrado"></app-alerts>
+    <app-alerts *ngFor="let alerts of alert" [type]="alerts.type" [description]="alerts.description"></app-alerts>
 </section>
