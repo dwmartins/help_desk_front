@@ -7,13 +7,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NewPasswordComponent } from 'src/app/components/new-password/new-password.component';
+import { NavegationComponent } from 'src/app/components/navegation/navegation.component';
+import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
+import { ChamadosComponent } from 'src/app/components/chamados/chamados.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    NavegationComponent,
+    DashboardComponent,
+    ChamadosComponent
   ],
   imports: [
     CommonModule,
