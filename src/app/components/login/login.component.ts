@@ -33,6 +33,7 @@ export class LoginComponent {
 
   submitForm() {
     if(this.formLogin.valid) {
+      this.loadSpinner = true;
       
       this.login.userLogin(this.formLogin.value).subscribe((response) => {
       this.loadSpinner = false;
@@ -46,7 +47,8 @@ export class LoginComponent {
         }
       }, (error) => {
         console.log(`ERRO: ${error}`);
-        this.alerts('error', 'Erro ao realizar o login.')
+        this.alerts('error', 'Erro ao realizar o login.');
+        this.loadSpinner = false;
       })
     } else {
       this.alerts('info', 'Preencha todos os campos.')
