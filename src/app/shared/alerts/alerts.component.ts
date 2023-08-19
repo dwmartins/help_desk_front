@@ -2,7 +2,13 @@ import { AfterViewInit, Component, ElementRef, Input, OnInit, SimpleChanges, Vie
 
 @Component({
   selector: 'app-alerts',
-  templateUrl: './alerts.component.html',
+  template: `
+  <div class="alert_content" #alerts>
+    <div class="alert" [ngClass]="{ 'alert-info': type === 'info', 'alert-success': type === 'success', 'alert-error': type === 'error' }">
+        <i [class]="icon"></i>
+        <div class="description">{{ description }}</div>
+    </div>
+  </div>`,
   styleUrls: ['./alerts.component.css']
 })
 export class AlertsComponent implements AfterViewInit, OnInit{
