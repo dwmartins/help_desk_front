@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { LoginComponent } from 'src/app/components/login/login.component';
 import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 
 
@@ -13,7 +15,10 @@ import { HttpClientModule } from '@angular/common/http'
   imports: [
     CommonModule,
     AngularMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule
   ]
 })
 export class ComponentesModule { }
