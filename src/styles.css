@@ -11,4 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
     /* Box shadow */
     --box-shadow-primary: 0px 0px 15px 5px #0000002a;
+    --box-shadow-alerts:  0px 6px 10px -1px #0000005b;
+
+    /* Colors */
+    --black-title: #504d4d;
 }

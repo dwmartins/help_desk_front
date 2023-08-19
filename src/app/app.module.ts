@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ComponentesModule } from './modules/componentes/componentes.module';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AngularMaterialModule } from './modules/angular-material/angular-materi
     AppRoutingModule,
     BrowserAnimationsModule,
     ComponentesModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
