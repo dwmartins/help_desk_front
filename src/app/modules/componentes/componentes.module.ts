@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { NewPasswordComponent } from 'src/app/components/new-password/new-password.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    NewPasswordComponent
   ],
   imports: [
     CommonModule,

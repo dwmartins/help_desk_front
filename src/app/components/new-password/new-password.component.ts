@@ -66,6 +66,7 @@ export class NewPasswordComponent {
         } else {
           this.alerts('info', response.alert);
           this.loadSpinner = false;
+          this.emalValid = false;
         }
 
       }, (error) => {

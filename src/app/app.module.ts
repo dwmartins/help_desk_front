@@ -8,12 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentesModule } from './modules/componentes/componentes.module';
 import { AngularMaterialModule } from './modules/angular-material/angular-material.module';
 import { SharedModule } from './modules/shared/shared.module';
-import { NewPasswordComponent } from './components/new-password/new-password.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NewPasswordComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

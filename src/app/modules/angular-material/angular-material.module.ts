@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -9,11 +10,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   declarations: [],
   imports: [
     CommonModule,
-    MatInputModule
+    MatInputModule,
+    MatStepperModule
   ],
   exports: [
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatStepperModule
   ]
 })
 export class AngularMaterialModule { }
