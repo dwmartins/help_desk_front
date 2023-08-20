@@ -9,7 +9,7 @@ export class NavegationComponent implements OnInit{
   @ViewChild('nav', { static: true }) navElement!: ElementRef
   @ViewChild('main', { static: true }) mainElement!: ElementRef
 
-  statusNav: boolean = false;
+  statusNav: boolean = true;
 
   constructor() {}
 
@@ -32,7 +32,7 @@ export class NavegationComponent implements OnInit{
     if(window.innerWidth <= 500) {
       this.navElement.nativeElement.classList.add('close');
       this.mainElement.nativeElement.classList.add('close_main');
-      console.log('fechado')
+      this.statusNav = false;
     }
   }
 }

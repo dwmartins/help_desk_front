@@ -14,7 +14,7 @@
     <div class="main" #main>
         <header>
             <div (click)="closeNav()" class="open_nav" title="Fechar navegação">
-                <i class="bi bi-x"></i>
+                <i class="bi" [class.bi-x]="statusNav" [class.bi-list]="!statusNav"></i>
             </div>
     
             <div class="information">
