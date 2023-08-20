@@ -1,9 +1,9 @@
 <section class="d-flex position-relative">
-    <nav>
+    <nav #nav>
         <img src="../../../assets//images//logo_3_dark.png" alt="Logo Help Desk">
         <ul>
-            <li><i class="bi bi-graph-up-arrow"></i> Dashboard </li>
-            <li><i class="bi bi-list-task"></i> Chamados </li>
+            <li [routerLink]="['/app/dashboard']"><i class="bi bi-graph-up-arrow"></i> Dashboard </li>
+            <li [routerLink]="['/app/chamados']"><i class="bi bi-list-task"></i> Chamados </li>
             <li><i class="bi bi-chat"></i> Chat </li>
             <li><i class="bi bi-person-add"></i> Usuários </li>
             <li><i class="bi bi-person-gear"></i> Perfil </li>
@@ -11,9 +11,9 @@
             <li><i class="bi bi-gear"></i> Configurações </li>
         </ul>
     </nav>
-    <div class="w-100">
+    <div class="main" #main>
         <header>
-            <div class="open_nav" title="Fechar navegação">
+            <div (click)="closeNav()" class="open_nav" title="Fechar navegação">
                 <i class="bi bi-x"></i>
             </div>
     
@@ -28,7 +28,7 @@
             </div>
         </header>
         <main>
-            
+            <router-outlet></router-outlet>
         </main>
         <footer>
             <p>© Help Desk 2023</p>
