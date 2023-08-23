@@ -1,0 +1,52 @@
+.called_table {
+    height: 380px;
+    overflow-y: scroll;
+}
+
+.called_status {
+    width: 90px;
+    height: 100%;
+    border-radius: 5px;
+    padding: 4px;
+    color: #FFF;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.text_finished {
+    color: #0ff749;
+}
+
+.pending {
+    background-color: #f0513c;
+}
+
+.finished {
+    background-color: #0ff749;
+}
+
+.execution {
+    background-color: #328afd;
+}
+
+
+.called_table::-webkit-scrollbar {
+    width: 4px;
+    /* width of the entire scrollbar */
+}
+
+.called_table::-webkit-scrollbar-track {
+    background: #ffffff00;
+    /* color of the tracking area */
+}
+
+.called_table::-webkit-scrollbar-thumb {
+    background-color: #c4c4c4;
+    /* color of the scroll thumb */
+    border-radius: 10px;
+    /* roundness of the scroll thumb */
+    /* creates padding around scroll thumb */
+}

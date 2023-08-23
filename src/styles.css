@@ -12,7 +12,7 @@ body {
     /*  background colors */
     --bg-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
     --bg-white: #ebebebe7;
-    --body-gray-light: #ffffff;
+    --body-gray-light: #f7f7f7;
     --body-blue-dark: #0E2238;
 
     /* Box shadow */
