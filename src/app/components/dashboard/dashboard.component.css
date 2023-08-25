@@ -25,7 +25,7 @@
 }
 
 .finished {
-    background-color: #0ff749;
+    background-color: #3bd461;
 }
 
 .execution {
@@ -49,4 +49,18 @@
     border-radius: 10px;
     /* roundness of the scroll thumb */
     /* creates padding around scroll thumb */
+}
+
+
+/* Loading skeleton */
+.skeleton_graphic {
+    height: 380px;
+}
+
+.skeleton_table {
+    min-width: 300px;
+}
+
+.skeleton_cards {
+    min-width: 200px;
 }
