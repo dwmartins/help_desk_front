@@ -5,6 +5,7 @@ import { NewPasswordComponent } from './components/new-password/new-password.com
 import { NavegationComponent } from './components/navegation/navegation.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChamadosComponent } from './components/chamados/chamados.component';
+import { NewCalledComponent } from './components/new-called/new-called.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
     children: [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'chamados', component: ChamadosComponent},
+      {path: 'novo-chamado', component: NewCalledComponent},
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'}
     ]
   },
