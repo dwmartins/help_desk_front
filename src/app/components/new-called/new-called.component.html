@@ -1,29 +1,35 @@
 <section class="w-100 d-flex justify-content-center">
-    <div class="w-100 rounded bg-white p-3 shadow-sm d-flex flex-column justify-content-center">
-        <h2 class="my-2 fw-bold text-secondary-emphasis text-center">Novo Chamado</h2>
+    <div class="rounded bg-white p-3 shadow-sm d-flex flex-column justify-content-center mx-1">
+        <h2 class="my-2 fw-bold text-dark text-center">Novo Chamado</h2>
 
-        <form class="my-2 d-flex flex-column w-100">
+        <form class="my-2 d-flex flex-column">
             <div class="mb-3">
-                <label for="title" class="text-secondary-emphasis fs-6 d-flex mb-2">Título <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="title">
+                <label for="title" class="text-dark fs-6 d-flex mb-2">Título <span class="text-danger">*</span></label>
+                <input type="text" class="form-control w-75" id="title">
             </div>
             <div class="mb-3">
-                <label for="priority" class="text-secondary-emphasis fs-6 d-flex mb-2 ">Prioridade <span class="text-danger">*</span></label>
-                <select class="form-select" aria-label="Default select example">
+                <label for="priority" class="text-dark fs-6 d-flex mb-2 ">Prioridade <span class="text-danger">*</span></label>
+                <select class="form-select w-50" aria-label="Default select example">
                     <option selected value="alta">Alta</option>
                     <option value="media">Média</option>
                     <option value="baixa">Baixa</option>
                 </select>
             </div>
             <div class="mb-3">
-                <label for="category" class="text-secondary-emphasis fs-6 d-flex mb-2 ">Categoria <span class="text-danger">*</span></label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected value="mecanica">Mecânica</option>
-                <option value="eletrica">Elétrica</option>
-                <option value="torneiro">Torneiro</option>
-                <option value="tecnologia">Tecnologia</option>
-                <option value="administracao">Administração</option>
-            </select>
+                <label for="category" class="text-dark fs-6 d-flex mb-2 ">Categoria <span class="text-danger">*</span></label>
+                <select class="form-select  w-50" aria-label="Default select example">
+                    <option selected value="mecanica">Mecânica</option>
+                    <option value="eletrica">Elétrica</option>
+                    <option value="torneiro">Torneiro</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="administracao">Administração</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <quill-editor name="editorContent" [(ngModel)]="editorContent"></quill-editor>
+            </div>
+            <div>
+                <button class="btn btn-primary d-inline-flex">Abrir chamado</button>
             </div>
         </form>
     </div>

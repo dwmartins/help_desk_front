@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-called.component.css']
 })
 export class NewCalledComponent {
-
+  editorContent: string = '';
 }
