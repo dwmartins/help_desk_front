@@ -2,14 +2,16 @@
     <div class="rounded bg-white p-3 shadow-sm d-flex flex-column justify-content-center mx-1">
         <h2 class="my-2 fw-bold text-dark text-center">Novo Chamado</h2>
 
-        <form class="my-2 d-flex flex-column">
+        <form class="my-2 d-flex flex-column" [formGroup]="formNewCalled" (ngSubmit)="submitForm()">
             <div class="mb-3">
                 <label for="title" class="text-dark fs-6 d-flex mb-2">Título <span class="text-danger">*</span></label>
-                <input type="text" class="form-control w-75" id="title">
+                <input type="text" class="form-control w-75" id="title" name="titulo" formControlName="titulo"
+                [ngClass]="{'invalid_field': formNewCalled.get('titulo')?.invalid && formNewCalled.get('titulo')?.touched}">
             </div>
             <div class="mb-3">
                 <label for="priority" class="text-dark fs-6 d-flex mb-2 ">Prioridade <span class="text-danger">*</span></label>
-                <select class="form-select w-50" aria-label="Default select example">
+                <select class="form-select w-50" name="prioridade" formControlName="prioridade"
+                [ngClass]="{'invalid_field': formNewCalled.get('prioridade')?.invalid && formNewCalled.get('prioridade')?.touched}">
                     <option selected value="alta">Alta</option>
                     <option value="media">Média</option>
                     <option value="baixa">Baixa</option>
@@ -17,7 +19,8 @@
             </div>
             <div class="mb-3">
                 <label for="category" class="text-dark fs-6 d-flex mb-2 ">Categoria <span class="text-danger">*</span></label>
-                <select class="form-select  w-50" aria-label="Default select example">
+                <select class="form-select w-50" name="categoria" formControlName="categoria"
+                [ngClass]="{'invalid_field': formNewCalled.get('categoria')?.invalid && formNewCalled.get('categoria')?.touched}">
                     <option selected value="mecanica">Mecânica</option>
                     <option value="eletrica">Elétrica</option>
                     <option value="torneiro">Torneiro</option>
@@ -26,7 +29,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <quill-editor name="editorContent" [(ngModel)]="editorContent"></quill-editor>
+                <quill-editor name="descricao" formControlName="descricao" [ngClass]="{'invalid_field': formNewCalled.get('descricao')?.invalid && formNewCalled.get('descricao')?.touched}"></quill-editor>
             </div>
             <div>
                 <button class="btn btn-primary d-inline-flex">Abrir chamado</button>
