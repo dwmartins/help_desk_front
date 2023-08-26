@@ -1,13 +1,14 @@
 section {
     height: 100vh;
     background: var(--bg-gradient);
+    background-size: cover;
     position: relative;
 }
 
 form {
     background-color: var(--bg-white);
     width: 90%;
-    max-width: 400px;
+    max-width: 350px;
     box-shadow: var(--box-shadow-primary);
 }
 
@@ -26,7 +27,7 @@ form mat-form-field i {
 
 form img {
     width: 100%;
-    max-width: 180px;
+    max-width: 130px;
 }
 
 form h2 {
@@ -35,4 +36,10 @@ form h2 {
 
 form a {
     text-decoration: none;
+}
+
+@media screen and (max-height: 461px) {
+    section {
+        height: 480px !important;
+    }
 }
