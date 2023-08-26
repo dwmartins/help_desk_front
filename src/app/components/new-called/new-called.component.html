@@ -1,0 +1,69 @@
+<section class="w-100 d-flex justify-content-center">
+    <div class="rounded bg-white p-3 shadow-sm d-flex flex-column justify-content-center mx-1">
+        <h2 class="my-2 fw-bold text-dark text-center">Novo Chamado</h2>
+
+        <form class="my-2 d-flex flex-column" [formGroup]="formNewCalled" (ngSubmit)="submitForm()">
+            <div class="mb-3">
+                <label for="title" class="text-dark fs-6 d-flex mb-2">Título <span class="text-danger">*</span></label>
+                <input type="text" class="form-control w-75" id="title" name="titulo" formControlName="titulo"
+                [ngClass]="{'invalid_field': formNewCalled.get('titulo')?.invalid && formNewCalled.get('titulo')?.touched}">
+            </div>
+            <div class="mb-3">
+                <label for="priority" class="text-dark fs-6 d-flex mb-2 ">Prioridade <span class="text-danger">*</span></label>
+                <select class="form-select w-50" name="prioridade" formControlName="prioridade"
+                [ngClass]="{'invalid_field': formNewCalled.get('prioridade')?.invalid && formNewCalled.get('prioridade')?.touched}">
+                    <option selected value="alta">Alta</option>
+                    <option value="media">Média</option>
+                    <option value="baixa">Baixa</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="text-dark fs-6 d-flex mb-2 ">Categoria <span class="text-danger">*</span></label>
+                <select class="form-select w-50" name="categoria" formControlName="categoria"
+                [ngClass]="{'invalid_field': formNewCalled.get('categoria')?.invalid && formNewCalled.get('categoria')?.touched}">
+                    <option selected value="mecanica">Mecânica</option>
+                    <option value="eletrica">Elétrica</option>
+                    <option value="torneiro">Torneiro</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="administracao">Administração</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="text-dark fs-6 d-flex mb-2">Descrição <span class="text-danger">*</span></label>
+                <quill-editor name="descricao" formControlName="descricao" [ngClass]="{'invalid_field': formNewCalled.get('descricao')?.invalid && formNewCalled.get('descricao')?.touched}"></quill-editor>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-primary d-inline-flex animat" [disabled]="loadSpinner">
+                    <span *ngIf="!loadSpinner">Abrir chamado</span>
+                    <div *ngIf="loadSpinner">
+                        <span class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>
+                        <span role="status">Aguarde...</span>
+                    </div>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+<app-alerts *ngFor="let alerts of alert" [type]="alerts.type" [description]="alerts.description"></app-alerts>
+
+<ng-template #sessionExpired let-modal>
+    <div class="d-flex justify-content-end bg-danger rounded-top">
+        <i class="bi bi-x-lg fs-5 p-2 text-light cursor-pointer" (click)="redirectLogin()"></i>
+    </div>
+
+    <div class="p-3">
+        <div class="d-flex align-items-center gap-2">
+            <div>
+                <i class="bi bi-clock-history fs-1 text-danger"></i>
+            </div>
+            <div class="p-2">
+                <h2 class="mb-0">Sua sessão expirou.</h2>
+                <h2>Você sera redirecionado para o login.</h2>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-danger" (click)="redirectLogin()">Logar</button>
+        </div>
+    </div>
+    
+</ng-template>

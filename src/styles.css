@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
 
 html, body { height: 100%; }
 body { 
@@ -12,7 +14,7 @@ body {
     /*  background colors */
     --bg-gradient: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
     --bg-white: #ebebebe7;
-    --body-gray-light: #f7f7f7;
+    --body-gray-light: #ebebeb;
     --body-blue-dark: #0E2238;
 
     /* Box shadow */
@@ -27,4 +29,15 @@ body {
 
     --blue-primary: #2081BE;
     --blue-secondary: #5495F6;
+}
+
+/* Validations */
+.invalid_field {
+    border: 1px solid #ff6060 !important;
+    background-color: #faa9a93b !important;
+}
+
+/* Utility */
+.cursor-pointer {
+    cursor: pointer;
 }

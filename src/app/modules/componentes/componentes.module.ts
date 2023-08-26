@@ -10,6 +10,8 @@ import { NewPasswordComponent } from 'src/app/components/new-password/new-passwo
 import { NavegationComponent } from 'src/app/components/navegation/navegation.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { ChamadosComponent } from 'src/app/components/chamados/chamados.component';
+import { NewCalledComponent } from 'src/app/components/new-called/new-called.component';
+import { QuillModule } from 'ngx-quill'
 
 
 
@@ -19,7 +21,8 @@ import { ChamadosComponent } from 'src/app/components/chamados/chamados.componen
     NewPasswordComponent,
     NavegationComponent,
     DashboardComponent,
-    ChamadosComponent
+    ChamadosComponent,
+    NewCalledComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { ChamadosComponent } from 'src/app/components/chamados/chamados.componen
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    QuillModule.forRoot()
   ]
 })
 export class ComponentesModule { }
