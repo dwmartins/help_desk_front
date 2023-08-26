@@ -5,15 +5,15 @@
         <div class="row gap-4" *ngIf="all_Called.length">
             <div class="col shadow-sm fw-bold p-3 rounded bg-white">
                 <div class="text-secondary-emphasis mb-1">Pendentes</div>
-                <h1 class="m-0 fw-bold fs-2 text-danger">7</h1>
+                <h1 class="m-0 fw-bold fs-2 text-danger">{{ pending_Called.length }}</h1>
             </div>
             <div class="col shadow-sm fw-bold p-3 rounded bg-white">
                 <div class="text-secondary-emphasis mb-1">Execução</div>
-                <h1 class="m-0 fw-bold fs-2 text-primary">3</h1>
+                <h1 class="m-0 fw-bold fs-2 text-primary">{{ running_Called.length }}</h1>
             </div>
             <div class="col shadow-sm fw-bold p-3 rounded bg-white">
                 <div class="text-secondary-emphasis mb-1">Finalizados</div>
-                <h1 class="m-0 fw-bold fs-2 text_finished">9</h1>
+                <h1 class="m-0 fw-bold fs-2 text_finished">{{finishing_Called.length }}</h1>
             </div>
         </div>
         <div class="row gap-4" *ngIf="!all_Called.length"> <!--Loading skeleton-->

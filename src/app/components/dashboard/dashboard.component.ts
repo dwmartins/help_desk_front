@@ -9,8 +9,10 @@ import { CalledService } from 'src/app/services/called/called.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit{
-  results: boolean = false;
   all_Called: Called[] = [];
+  pending_Called: Called[] = [];
+  running_Called: Called[] = [];
+  finishing_Called: Called[] = [];
 
   constructor(
     private serviceCalled: CalledService,
@@ -24,9 +26,17 @@ export class DashboardComponent implements OnInit{
   getAllCalled() {
     this.serviceCalled.getALL().subscribe((response) => {
       this.all_Called = response;
+      this.filterCalledByStatus();
+
       console.log(this.all_Called)
     }, (error) => {
       console.log(`ERRO: ${error}`);
     })
+  }
+
+  filterCalledByStatus() {
+    this.pending_Called = this.all_Called.filter(called => called.status == 'Pendente');
+    this.running_Called = this.all_Called.filter(called => called.status == 'Execução');
+    this.finishing_Called = this.all_Called.filter(called => called.status == 'Finalizado');
   }
 }

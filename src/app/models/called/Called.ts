@@ -4,6 +4,7 @@ export interface Called {
     titulo: string,
     descricao: string,
     prioridade: string,
+    status: string,
     categoria: string,
     createdAt: Date,
     updateAt: Date
