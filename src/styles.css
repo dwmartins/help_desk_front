@@ -30,3 +30,9 @@ body {
     --blue-primary: #2081BE;
     --blue-secondary: #5495F6;
 }
+
+/* Validations */
+.invalid_field {
+    border: 1px solid #ff6060 !important;
+    background-color: #faa9a93b !important;
+}

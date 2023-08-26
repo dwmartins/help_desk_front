@@ -12,7 +12,7 @@ export class NewCalledComponent {
 
   formNewCalled: FormGroup;
 
-  editorContent: string = '';
+  loadSpinner: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,11 +30,14 @@ export class NewCalledComponent {
 
   submitForm() {
     if(this.formNewCalled.valid) {
+      this.loadSpinner = true;
         this.serviceCalled.newCalled(this.formNewCalled.value).subscribe((response) => {
+          this.loadSpinner = false;
           console.log(response)
           console.log('valido');
           this.formNewCalled.reset();
         }, (error) => {
+          this.loadSpinner = false;
           console.log(`ERRO: ${error}`);
         });
     } else {

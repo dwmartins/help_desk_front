@@ -31,8 +31,14 @@
             <div class="mb-3">
                 <quill-editor name="descricao" formControlName="descricao" [ngClass]="{'invalid_field': formNewCalled.get('descricao')?.invalid && formNewCalled.get('descricao')?.touched}"></quill-editor>
             </div>
-            <div>
-                <button class="btn btn-primary d-inline-flex">Abrir chamado</button>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-primary d-inline-flex animat" [disabled]="loadSpinner">
+                    <span *ngIf="!loadSpinner">Abrir chamado</span>
+                    <div *ngIf="loadSpinner">
+                        <span class="spinner-border spinner-border-sm me-1" aria-hidden="true"></span>
+                        <span role="status">Aguarde...</span>
+                    </div>
+                </button>
             </div>
         </form>
     </div>
