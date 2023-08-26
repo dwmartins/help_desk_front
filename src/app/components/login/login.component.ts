@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -10,7 +10,8 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
+  user!: User;
   formLogin: FormGroup;
 
   showPassword: string = 'password';
@@ -31,6 +32,20 @@ export class LoginComponent {
     })
   }
 
+  ngOnInit(): void {
+    this.getUserData();
+  }
+
+  getUserData() {
+    const user = localStorage.getItem('user_login');
+    if(user) {
+      this.user = JSON.parse(user) as User;
+      if(this.user.user_token) {
+        this.router.navigate(['/app']);
+      }
+    }
+  }
+
   submitForm() {
     if(this.formLogin.valid) {
       this.loadSpinner = true;
@@ -40,7 +55,10 @@ export class LoginComponent {
 
         if(response.success) {
           this.setLocalStorage(response);
-          this.alerts('success', 'Login realizado com sucesso.')
+          this.alerts('success', 'Login realizado com sucesso.');
+          setTimeout(() => {
+            this.router.navigate(['/app']);
+          }, 1500);
           
         } else if(response.alert) {
           this.alerts('info', response.alert)
