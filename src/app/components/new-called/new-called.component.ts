@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/users/User';
 import { CalledService } from 'src/app/services/called/called.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-new-called',
@@ -10,6 +11,7 @@ import { CalledService } from 'src/app/services/called/called.service';
   styleUrls: ['./new-called.component.css']
 })
 export class NewCalledComponent implements OnInit{
+  @ViewChild('content', { static: true }) content!: ElementRef;
 
   user!: User;
 
@@ -21,7 +23,8 @@ export class NewCalledComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private serviceCalled: CalledService
+    private serviceCalled: CalledService,
+    private modal: NgbModal
   ) {
     this.formNewCalled = this.formBuilder.group({
       user_id: [''],
@@ -40,6 +43,8 @@ export class NewCalledComponent implements OnInit{
     const user = localStorage.getItem('user_login');
     if(user) {
       this.user = JSON.parse(user) as User;
+    } else {
+      this.modal.open(this.content, { centered: true });
     }
   }
 
@@ -64,6 +69,13 @@ export class NewCalledComponent implements OnInit{
       this.alerts('info', 'Preencha todos os campos.');
       this.formNewCalled.markAllAsTouched();
     }
+  }
+
+  redirectLogin() {
+    this.modal.dismissAll(this.content);
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 500);
   }
 
   alerts(type: string, description: string) {

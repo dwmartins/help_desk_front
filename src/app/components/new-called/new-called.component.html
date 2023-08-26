@@ -29,6 +29,7 @@
                 </select>
             </div>
             <div class="mb-3">
+                <label class="text-dark fs-6 d-flex mb-2">Descrição <span class="text-danger">*</span></label>
                 <quill-editor name="descricao" formControlName="descricao" [ngClass]="{'invalid_field': formNewCalled.get('descricao')?.invalid && formNewCalled.get('descricao')?.touched}"></quill-editor>
             </div>
             <div class="d-flex align-items-center">
@@ -44,3 +45,25 @@
     </div>
 </section>
 <app-alerts *ngFor="let alerts of alert" [type]="alerts.type" [description]="alerts.description"></app-alerts>
+
+<ng-template #content let-modal>
+    <div class="d-flex justify-content-end bg-danger rounded-top">
+        <i class="bi bi-x-lg fs-5 p-2 text-light cursor-pointer" (click)="redirectLogin()"></i>
+    </div>
+
+    <div class="p-3">
+        <div class="d-flex align-items-center gap-2">
+            <div>
+                <i class="bi bi-clock-history fs-1 text-danger"></i>
+            </div>
+            <div class="p-2">
+                <h2 class="mb-0">Sua sessão expirou.</h2>
+                <h2>Você sera redirecionado para o login.</h2>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-danger" (click)="redirectLogin()">Logar</button>
+        </div>
+    </div>
+    
+</ng-template>

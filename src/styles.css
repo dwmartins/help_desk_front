@@ -36,3 +36,8 @@ body {
     border: 1px solid #ff6060 !important;
     background-color: #faa9a93b !important;
 }
+
+/* Utility */
+.cursor-pointer {
+    cursor: pointer;
+}
