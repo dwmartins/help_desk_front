@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CalledService } from 'src/app/services/called/called.service';
 
 @Component({
   selector: 'app-new-called',
@@ -15,7 +16,8 @@ export class NewCalledComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private serviceCalled: CalledService
   ) {
     this.formNewCalled = this.formBuilder.group({
       user_id: ['1'],
@@ -28,9 +30,13 @@ export class NewCalledComponent {
 
   submitForm() {
     if(this.formNewCalled.valid) {
-      console.log('valido');
-      console.log(this.formNewCalled.value);
-      this.formNewCalled.reset();
+        this.serviceCalled.newCalled(this.formNewCalled.value).subscribe((response) => {
+          console.log(response)
+          console.log('valido');
+          this.formNewCalled.reset();
+        }, (error) => {
+          console.log(`ERRO: ${error}`);
+        });
     } else {
       console.log('não validado');
       this.formNewCalled.markAllAsTouched();
