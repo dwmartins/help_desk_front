@@ -13,6 +13,6 @@ export class CalledService {
   constructor(private http: HttpClient) { }
 
   newCalled(called: Called) {
-    return this.http.post(`${this.API}/chamados/novo-chamado`, called)
+    return this.http.post<Called>(`${this.API}/chamados/novo-chamado`, called)
   }
 }

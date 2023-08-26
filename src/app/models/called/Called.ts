@@ -4,4 +4,8 @@ export interface Called {
     descricao: string,
     prioridade: string,
     categoria: string
+
+    // res
+    success: boolean,
+    msg: string
 }

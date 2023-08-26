@@ -43,3 +43,4 @@
         </form>
     </div>
 </section>
+<app-alerts *ngFor="let alerts of alert" [type]="alerts.type" [description]="alerts.description"></app-alerts>

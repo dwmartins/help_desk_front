@@ -13,6 +13,7 @@ export class NewCalledComponent {
   formNewCalled: FormGroup;
 
   loadSpinner: boolean = false;
+  alert: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,16 +34,27 @@ export class NewCalledComponent {
       this.loadSpinner = true;
         this.serviceCalled.newCalled(this.formNewCalled.value).subscribe((response) => {
           this.loadSpinner = false;
-          console.log(response)
-          console.log('valido');
-          this.formNewCalled.reset();
+          if(response.success) {
+            this.formNewCalled.reset();
+            this.alerts('success', response.msg);
+          } else {
+            this.alerts('error', response.msg);
+          }
         }, (error) => {
+          this.alerts('error', 'Erro ao abrir o chamado.');
           this.loadSpinner = false;
           console.log(`ERRO: ${error}`);
         });
     } else {
-      console.log('não validado');
+      this.alerts('info', 'Preencha todos os campos.');
       this.formNewCalled.markAllAsTouched();
     }
+  }
+
+  alerts(type: string, description: string) {
+    this.alert.push({
+      type: type,
+      description: description
+    })
   }
 }
