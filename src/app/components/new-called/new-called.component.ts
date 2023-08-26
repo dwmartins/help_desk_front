@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/users/User';
 import { CalledService } from 'src/app/services/called/called.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { CalledService } from 'src/app/services/called/called.service';
   templateUrl: './new-called.component.html',
   styleUrls: ['./new-called.component.css']
 })
-export class NewCalledComponent {
+export class NewCalledComponent implements OnInit{
+
+  user!: User;
 
   formNewCalled: FormGroup;
 
@@ -21,7 +24,7 @@ export class NewCalledComponent {
     private serviceCalled: CalledService
   ) {
     this.formNewCalled = this.formBuilder.group({
-      user_id: ['1'],
+      user_id: [''],
       titulo: ['', Validators.required],
       descricao: ['', Validators.required],
       prioridade: ['', Validators.required],
@@ -29,7 +32,19 @@ export class NewCalledComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.getUserData();
+  }
+
+  getUserData() {
+    const user = localStorage.getItem('user_login');
+    if(user) {
+      this.user = JSON.parse(user) as User;
+    }
+  }
+
   submitForm() {
+    this.formNewCalled.controls['user_id'].setValue(this.user.user_id);
     if(this.formNewCalled.valid) {
       this.loadSpinner = true;
         this.serviceCalled.newCalled(this.formNewCalled.value).subscribe((response) => {
