@@ -28,6 +28,17 @@ export class DashboardComponent implements OnInit{
       this.all_Called = response;
       this.filterCalledByStatus();
 
+      this.all_Called.forEach(called => {
+        const descricaoArrayBuffer = called.descricao.data;
+        const uint8Array = new Uint8Array(descricaoArrayBuffer);
+        called.descricaoHtml = new TextDecoder('utf-8').decode(uint8Array);
+        called.descricaoString = called.descricaoHtml
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(called.descricaoString, 'text/html');
+        called.descricaoString = doc.body.textContent;
+      });
+      
       console.log(this.all_Called)
     }, (error) => {
       console.log(`ERRO: ${error}`);

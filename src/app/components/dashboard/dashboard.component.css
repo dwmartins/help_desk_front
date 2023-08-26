@@ -3,6 +3,29 @@
     overflow-y: scroll;
 }
 
+.table_title {
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important; 
+    max-width: 120px !important;
+}
+
+.table_description {
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important; 
+    max-width: 210px !important;
+}
+
+.see_called {
+    cursor: pointer;
+    transition: 0.2s !important;
+}
+
+.see_called:hover {
+    color: #0b2950 !important;
+}
+
 .called_status {
     width: 90px;
     height: 100%;
