@@ -11,7 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./new-called.component.css']
 })
 export class NewCalledComponent implements OnInit{
-  @ViewChild('content', { static: true }) content!: ElementRef;
+  @ViewChild('sessionExpired', { static: true }) sessionExpired!: ElementRef;
 
   user!: User;
 
@@ -44,7 +44,11 @@ export class NewCalledComponent implements OnInit{
     if(user) {
       this.user = JSON.parse(user) as User;
     } else {
-      this.modal.open(this.content, { centered: true });
+      this.modal.open(this.sessionExpired, { centered: true });
+      setTimeout(() => {
+        this.modal.dismissAll(this.sessionExpired);
+        this.router.navigate(['/login']);
+      }, 3000);
     }
   }
 
@@ -72,7 +76,7 @@ export class NewCalledComponent implements OnInit{
   }
 
   redirectLogin() {
-    this.modal.dismissAll(this.content);
+    this.modal.dismissAll(this.sessionExpired);
     setTimeout(() => {
       this.router.navigate(['/login']);
     }, 500);

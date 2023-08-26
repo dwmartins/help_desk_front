@@ -46,7 +46,7 @@
 </section>
 <app-alerts *ngFor="let alerts of alert" [type]="alerts.type" [description]="alerts.description"></app-alerts>
 
-<ng-template #content let-modal>
+<ng-template #sessionExpired let-modal>
     <div class="d-flex justify-content-end bg-danger rounded-top">
         <i class="bi bi-x-lg fs-5 p-2 text-light cursor-pointer" (click)="redirectLogin()"></i>
     </div>
