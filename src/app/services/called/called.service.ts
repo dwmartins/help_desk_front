@@ -15,4 +15,8 @@ export class CalledService {
   newCalled(called: Called) {
     return this.http.post<Called>(`${this.API}/chamados/novo-chamado`, called)
   }
+
+  getALL() {
+    return this.http.get<Called[]>(`${this.API}/chamados/todos-chamados`);
+  }
 }

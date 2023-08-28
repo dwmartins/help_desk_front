@@ -2,21 +2,21 @@
     <h2 class="fw-bold text-secondary-emphasis">Dashboard</h2>
 
     <div class="container-fluid mb-3">
-        <div class="row gap-4" *ngIf="results">
+        <div class="row gap-4" *ngIf="all_Called.length">
             <div class="col shadow-sm fw-bold p-3 rounded bg-white">
                 <div class="text-secondary-emphasis mb-1">Pendentes</div>
-                <h1 class="m-0 fw-bold fs-2 text-danger">7</h1>
+                <h1 class="m-0 fw-bold fs-2 text-danger">{{ pending_Called.length }}</h1>
             </div>
             <div class="col shadow-sm fw-bold p-3 rounded bg-white">
                 <div class="text-secondary-emphasis mb-1">Execução</div>
-                <h1 class="m-0 fw-bold fs-2 text-primary">3</h1>
+                <h1 class="m-0 fw-bold fs-2 text-primary">{{ running_Called.length }}</h1>
             </div>
             <div class="col shadow-sm fw-bold p-3 rounded bg-white">
                 <div class="text-secondary-emphasis mb-1">Finalizados</div>
-                <h1 class="m-0 fw-bold fs-2 text_finished">9</h1>
+                <h1 class="m-0 fw-bold fs-2 text_finished">{{finishing_Called.length }}</h1>
             </div>
         </div>
-        <div class="row gap-4"> <!--Loading skeleton-->
+        <div class="row gap-4" *ngIf="!all_Called.length"> <!--Loading skeleton-->
             <div *ngFor="let r of [].constructor(3); let i = index" class="d-flex flex-column placeholder-glow col shadow-sm fw-bold p-3 rounded bg-white skeleton_cards">
                 <span class="placeholder mb-2 col-5 rounded-2 py-2"></span>
                 <span class="placeholder m-0 col-2 rounded-2 py-2"></span>
@@ -28,96 +28,43 @@
         <div class="row gap-4">
             <div class="col-sm-8 bg-white p-3 rounded shadow-sm placeholder-glow">
                 <div>
-                    <h4 *ngIf="results" class="fw-bold text-secondary-emphasis">Chamados recentes</h4>
-                    <span class="placeholder col-2 py-2 rounded-2 mb-4"></span><!--Loading skeleton-->
+                    <h4 *ngIf="all_Called.length" class="fw-bold text-secondary-emphasis">Chamados recentes</h4>
+                    <span *ngIf="!all_Called.length" class="placeholder col-2 py-2 rounded-2 mb-4"></span><!--Loading skeleton-->
                 </div>
                 <div class="table-responsive overflow-y-auto called_table">
                     <table class="table table-hover m-0">
                         <thead class="table-light">
-                            <tr *ngIf="results">
+                            <tr *ngIf="all_Called.length">
+                                <th scope="col"><label>Acões</label></th>
                                 <th scope="col"><label>Titulo</label></th>
                                 <th scope="col"><label>Descrição</label></th>
                                 <th scope="col"><label>Autor</label></th>
                                 <th scope="col"><label>Data</label></th>
-                                <th scope="col"><label>Status</label></th>
+                                <th scope="col" class="text-center"><label>Status</label></th>
                             </tr>
-                            <tr><!--Loading skeleton-->
+                            <tr *ngIf="!all_Called.length"><!--Loading skeleton-->
                                 <th *ngFor="let r of [].constructor(5); let i = index"><span class="placeholder rounded-2 py-2 col-7"></span></th>
                             </tr>
                         </thead>
-                        <tbody *ngIf="results" class="table">
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status pending">Finalizado</label></td>
+                        <tbody *ngIf="all_Called.length" class="table">
+                            <tr *ngFor="let called of all_Called" class="align-middle">
+                                <td><i class="bi bi-search text-primary see_called"></i></td>
+                                <td class="table_title ">{{called.titulo}}</td>
+                                <td class="table_description">{{ called.descricaoString }}</td>
+                                <td>{{ called.user_nome }}</td>
+                                <td>{{called.createdAt | date: 'dd/MM/yy HH:mm'}}</td>
+                                <td>
+                                    <label class="called_status" 
+                                    [ngClass]="{'pending': called.status == 'Pendente',
+                                                'finished': called.status == 'Finalizado',
+                                                'execution': called.status == 'Execução'}">
+                                    {{ called.status }}
+                                    </label>
+                                </td>
                             </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status finished">Finalizado</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status pending">Pendente</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status pending">Pendente</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status finished">Finalizado</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status execution">Execução</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status finished">Finalizado</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status finished">Finalizado</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status execution">Execução</label></td>
-                            </tr>
-                            <tr class="align-middle">
-                                <td>Lorem, ipsum</td>
-                                <td>Lorem, ipsum dolor</td>
-                                <td>Douglas</td>
-                                <td>10/09/23 19:00</td>
-                                <td><label class="called_status execution">Execução</label></td>
-                            </tr>
+
                         </tbody>
-                        <tbody class="skeleton_table"><!--Loading skeleton-->
+                        <tbody *ngIf="!all_Called.length" class="skeleton_table"><!--Loading skeleton-->
                             <tr *ngFor="let r of [].constructor(9); let i = index">
                                 <td *ngFor="let r of [].constructor(5); let i = index"><span class="placeholder rounded-2 py-2 col-7"></span></td>
                             </tr>
